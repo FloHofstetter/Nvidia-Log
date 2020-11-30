@@ -31,7 +31,7 @@ def main():
         first_run = False
         sleep(1)
 
-    print("Logging terminated...")
+    print("\nLogging terminated...")
 
 if __name__ == "__main__":
     main()

@@ -6,12 +6,15 @@ PLOTFILE = "plot"
 
 
 def main():
-    logfile = sys.argv[1]
-    with open(logfile, "r") as csvfile:
-        gpu_dict = smi_plotter.file_to_gpu_dict(csvfile)
+    logfiles = sys.argv[1:]
+    gpu_log_dicts = []
+
+    for logfile in logfiles:
+        with open(logfile, "r") as csvfile:
+            gpu_log_dicts.append(smi_plotter.file_to_gpu_dict(csvfile))
 
     with open(logfile[:-4] + ".png", "wb") as plotfile:
-        smi_plotter.plot_gpu_stats([gpu_dict], plotfile)
+        smi_plotter.plot_gpu_stats(gpu_log_dicts, plotfile)
 
 
 if __name__ == "__main__":
