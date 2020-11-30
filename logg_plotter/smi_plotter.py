@@ -1,5 +1,5 @@
 import csv
-from typing import List, TextIO
+from typing import List, TextIO, BinaryIO
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 from datetime import datetime
@@ -36,7 +36,7 @@ def file_to_gpu_dict(filedescriptor: TextIO) -> dict:
     return gpu_dict
 
 
-def plot_gpu_stats(gpu_dicts: List[dict]):
+def plot_gpu_stats(gpu_dicts: List[dict], filedescriptor: BinaryIO):
     """
     Get List of dicts with GPU log information.
     Safe plot GPU log information to png image.
@@ -167,21 +167,11 @@ def plot_gpu_stats(gpu_dicts: List[dict]):
     fig.subplots_adjust(
         left=left, bottom=bottom, right=right, top=top, wspace=wspace, hspace=hspace
     )
-    datetime_now = datetime.now()
-    date_now = datetime_now.strftime("%d.%m.%Y")
-    time_now = datetime_now.strftime("%H:%M:%S")
-    plt.savefig(f"GPU-Statistics_{date_now}_{time_now}.png")
+    plt.savefig(filedescriptor, format="png")
 
 
 def main():
-
-    FILENAME = "GPU-a40c5b91-47af-e186-4c54-9563ffb2a8a3_30.11.2020_17:17:16.csv"
-
-    with open(FILENAME, "r") as csvfile:
-        gpu_dict = file_to_gpu_dict(csvfile)
-
-    print(gpu_dict["mem_used"])
-    plot_gpu_stats([gpu_dict])
+    pass
 
 
 if __name__ == "__main__":
