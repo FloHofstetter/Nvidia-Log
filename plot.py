@@ -13,7 +13,7 @@ def main():
         with open(logfile, "r") as csvfile:
             gpu_log_dicts.append(smi_plotter.file_to_gpu_dict(csvfile))
 
-    with open(logfile[:-4] + ".png", "wb") as plotfile:
+    with open("GPUs" + logfile[5:-4] + ".png", "wb") as plotfile:
         smi_plotter.plot_gpu_stats(gpu_log_dicts, plotfile)
 
 

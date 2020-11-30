@@ -69,7 +69,7 @@ def plot_gpu_stats(gpu_dicts: List[dict], filedescriptor: BinaryIO):
 
     ax0.set_title(
         f"All GPUs utilisation\nmin {sum(min_util):.2f} | max: {sum(max_util):.2f}"
-        + " | avg: {sum(avg_util):.2f}"
+        + f" | avg: {sum(avg_util):.2f}"
     )
     ax0.set_xlabel("Time in s")
     ax0.set_ylabel("GPU utilisation in %")
