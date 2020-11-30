@@ -65,7 +65,7 @@ def plot_gpu_stats(gpu_dicts: List[dict], filedescriptor: BinaryIO):
         avg_util.append(sum(gpu_dict["gpu_util"]) / len(gpu_dict["gpu_util"]))
 
     # ax0.set_xlim(0.0, 100.0)
-    ax0.set_ylim(0.0, 50.0)
+    ax0.set_ylim(0.0, 100.0)
 
     ax0.set_title(
         f"All GPUs utilisation\nmin {sum(min_util):.2f} | max: {sum(max_util):.2f}"
@@ -142,7 +142,7 @@ def plot_gpu_stats(gpu_dicts: List[dict], filedescriptor: BinaryIO):
             sum(gpu_dict["temperature"]) / len(gpu_dict["temperature"])
         )
     # ax0.set_xlim(0.0, 100.0)
-    ax3.set_ylim(0.0, 50.0)
+    ax3.set_ylim(bottom=0.0)
 
     ax3.set_title(
         f"All GPUs Temperature\nmin {sum(min_temperature):.2f} | "
