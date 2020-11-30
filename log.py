@@ -26,7 +26,7 @@ def main():
     while not killer.kill_now:
         gpu_dicts = smi_logger.get_gpu_dicts()
         for gpu_dict in gpu_dicts:
-            with open(f"{gpu_dict['uuid']}_" + timstamp_name + ".csv", "a") as csvfile:
+            with open(f"{gpu_dict['id']}_" + timstamp_name + ".csv", "a") as csvfile:
                 smi_logger.gpu_dicts_to_csv(gpu_dict, csvfile, first_run)
         first_run = False
         sleep(1)
