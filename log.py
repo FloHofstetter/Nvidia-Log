@@ -6,13 +6,15 @@ from time import sleep
 
 
 class GracefulKiller:
-  kill_now = False
-  def __init__(self):
-    signal.signal(signal.SIGINT, self.exit_gracefully)
-    signal.signal(signal.SIGTERM, self.exit_gracefully)
+    kill_now = False
 
-  def exit_gracefully(self,signum, frame):
-    self.kill_now = True
+    def __init__(self):
+        signal.signal(signal.SIGINT, self.exit_gracefully)
+        signal.signal(signal.SIGTERM, self.exit_gracefully)
+
+    def exit_gracefully(self, signum, frame):
+        self.kill_now = True
+
 
 def main():
     datetime_now = datetime.now()
@@ -26,12 +28,15 @@ def main():
     while not killer.kill_now:
         gpu_dicts = smi_logger.get_gpu_dicts()
         for gpu_dict in gpu_dicts:
-            with open(f"{gpu_dict['id']}_" + timstamp_name + ".csv", "a") as csvfile:
+            with open(
+                f"GPU-{gpu_dict['id']}_" + timstamp_name + ".csv", "a"
+            ) as csvfile:
                 smi_logger.gpu_dicts_to_csv(gpu_dict, csvfile, first_run)
         first_run = False
         sleep(1)
 
     print("\nLogging terminated...")
+
 
 if __name__ == "__main__":
     main()
