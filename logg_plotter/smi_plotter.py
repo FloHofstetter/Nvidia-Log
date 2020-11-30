@@ -68,7 +68,8 @@ def plot_gpu_stats(gpu_dicts: List[dict], filedescriptor: BinaryIO):
     ax0.set_ylim(0.0, 50.0)
 
     ax0.set_title(
-        f"GPUs utilisation\nmin {sum(min_util):.2f} | max: {sum(max_util):.2f} | avg: {sum(avg_util):.2f}"
+        f"All GPUs utilisation\nmin {sum(min_util):.2f} | max: {sum(max_util):.2f}"
+        + " | avg: {sum(avg_util):.2f}"
     )
     ax0.set_xlabel("Time in s")
     ax0.set_ylabel("GPU utilisation in %")
@@ -91,7 +92,7 @@ def plot_gpu_stats(gpu_dicts: List[dict], filedescriptor: BinaryIO):
     ax1.set_ylim(0.0, 100.0)
 
     ax1.set_title(
-        f"GPU Memory usage relative\nmin {sum(min_mem_util):.2f} | "
+        f"All GPUs Memory usage relative\nmin {sum(min_mem_util):.2f} | "
         + f"max: {sum(max_mem_util):.2f} | avg: {sum(avg_mem_util):.2f}"
     )
     ax1.set_xlabel("Time in s")
@@ -117,7 +118,7 @@ def plot_gpu_stats(gpu_dicts: List[dict], filedescriptor: BinaryIO):
     ax2.set_ylim(bottom=0.0)
 
     ax2.set_title(
-        f"GPU Memory usage absolute\nmin {sum(min_mem_used):.2f} | "
+        f"All GPUs Memory usage absolute\nmin {sum(min_mem_used):.2f} | "
         + f"max: {sum(max_mem_used):.2f} | avg: {sum(avg_mem_used):.2f}"
     )
     ax2.set_xlabel("Time in s")
@@ -144,7 +145,7 @@ def plot_gpu_stats(gpu_dicts: List[dict], filedescriptor: BinaryIO):
     ax3.set_ylim(0.0, 50.0)
 
     ax3.set_title(
-        f"GPU Temperature\nmin {sum(min_temperature):.2f} | "
+        f"All GPUs Temperature\nmin {sum(min_temperature):.2f} | "
         + f"max: {sum(max_temperature):.2f} | avg: {sum(avg_temperature):.2f}"
     )
     ax3.set_xlabel("Time in s")
