@@ -145,8 +145,9 @@ def plot_gpu_stats(gpu_dicts: List[dict], filedescriptor: BinaryIO):
     ax3.set_ylim(bottom=0.0)
 
     ax3.set_title(
-        f"All GPUs Temperature\nmin {sum(min_temperature):.2f} | "
-        + f"max: {sum(max_temperature):.2f} | avg: {sum(avg_temperature):.2f}"
+        f"All GPUs Temperature\nmin {min(min_temperature):.2f} | "
+        + f"max: {max(max_temperature):.2f} | "
+        + f"avg: {sum(avg_temperature)/len(avg_temperature):.2f}"
     )
     ax3.set_xlabel("Time in s")
     ax3.set_ylabel("GPU Temperature in °C")
